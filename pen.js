@@ -2,21 +2,23 @@ var Pen = Shape.extend({
 
 	constructor: function() {
 		this.base("Pen");
+		this.points = [];
 	},
 
 	draw: function(canvas) {
 		canvas.strokeStyle = this.color;
-		canvas.lineWidth = 5;
-		canvas.lineJoin = canvas.lineCap = 'round';
-		canvas.moveTo(this.size.x, this.size.y);
-		canvas.lineTo(this.size.x, this.size.y);
+		canvas.beginPath();
+		canvas.moveTo(this.points[0].x, this.points[0].y);
+		for (var i = 1; i < this.points.length; i++) {
+			canvas.lineTo(this.points[i].x, this.points[i].y);
+		}
 		canvas.stroke();
 		this.base(canvas);
+
 	},
 
 	drawing:function(point) {
-		this.size.x = point.x;
-		this.size.y = point.y;
+		this.points.push(point);
 	},
 
 	added: function(canvas) {
