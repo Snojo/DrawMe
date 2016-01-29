@@ -68,6 +68,7 @@ function App(canvasSelector) {
 	
 	self.clear = function() {
 		self.shapes = [];
+		self.redoarray = [];
 		self.redraw();
 	}
 
@@ -135,6 +136,9 @@ $(function() {
 	};});
 	$('#penbutton').click(function(){app.shapeFactory = function() {
 		return new Pen();
+	};});
+	$('#textbutton').click(function(){app.shapeFactory = function() {
+		return new Text();
 	};});
 	$('#clearbutton').click(function(){app.clear()});
 	$('#undobutton').click(function(){app.undo()});
