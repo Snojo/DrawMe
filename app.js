@@ -92,7 +92,11 @@ function App(canvasSelector) {
 		// Set defaults
 		self.color = '#ff0000';	
 		self.linewidth = 1;
-		// TODO: Set sensible defaults ...
+		self.shapeFactory = function() {
+			return new Pen();
+		};
+		$("#penbutton").prop("checked", true);
+		$("#linewidth1").prop("selected", "selected");
 	}
 	
 	self.init();
