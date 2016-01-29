@@ -6,6 +6,7 @@ var Shape = Base.extend({
 		this.size = new Point(0,0);
 		this.color = color;
 		this.selected = false;
+		this.linewidth = linewidth;
 	},
 
 
