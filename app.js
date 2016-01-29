@@ -52,6 +52,7 @@ function App(canvasSelector) {
 	self.mousedown = function(e) {
 		if(self.shapeFactory != null) {
 			self.drawingStart(e);
+			self.redoarray = [];
 		} else {
 		}
 
@@ -68,6 +69,22 @@ function App(canvasSelector) {
 	self.clear = function() {
 		self.shapes = [];
 		self.redraw();
+	}
+
+	self.undo = function() {
+		if(self.shapes.length > 0) {
+			self.redoarray.push(self.shapes[self.shapes.length-1]);
+			self.shapes = self.shapes.slice(0,-1);
+			self.redraw();
+		}
+	}
+
+	self.redo = function() {
+		if(self.redoarray.length > 0) {
+			self.shapes.push(self.redoarray[self.redoarray.length-1]);
+			self.redoarray = self.redoarray.slice(0,-1);
+			self.redraw();
+		}
 	}
 	
 	self.setColor = function(color) {
@@ -88,6 +105,7 @@ function App(canvasSelector) {
 		self.shapeFactory = null;
 		self.canvasContext = canvas.getContext("2d");
 		self.shapes = new Array();
+		self.redoarray = new Array();
 		
 		// Set defaults
 		self.color = '#ff0000';	
@@ -119,6 +137,8 @@ $(function() {
 		return new Pen();
 	};});
 	$('#clearbutton').click(function(){app.clear()});
+	$('#undobutton').click(function(){app.undo()});
+	$('#redobutton').click(function(){app.redo()});
 	$('#color').change(function(){app.setColor($(this).val())});
 	$('#linewidth').change(function(){app.setLineWidth($(this).val())});
 });

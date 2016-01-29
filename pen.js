@@ -8,12 +8,14 @@ var Pen = Shape.extend({
 	draw: function(canvas) {
 		canvas.strokeStyle = this.color;
 		canvas.lineWidth = this.linewidth;
-		canvas.beginPath();
-		canvas.moveTo(this.points[0].x, this.points[0].y);
-		for (var i = 1; i < this.points.length; i++) {
-			canvas.lineTo(this.points[i].x, this.points[i].y);
+		if(this.points.length > 0) {
+			canvas.beginPath();
+			canvas.moveTo(this.points[0].x, this.points[0].y);
+			for (var i = 1; i < this.points.length; i++) {
+				canvas.lineTo(this.points[i].x, this.points[i].y);
+			}
+			canvas.stroke();
 		}
-		canvas.stroke();
 		this.base(canvas);
 
 	},
