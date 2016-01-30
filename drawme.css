@@ -1,0 +1,10 @@
+#text {
+    position: absolute;
+    border: 1px dashed black;
+    outline: 0;
+    display: none;
+     
+    font: 10px Verdana;
+    overflow: hidden;
+    white-space: nowrap;
+}
