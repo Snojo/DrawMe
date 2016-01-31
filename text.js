@@ -2,7 +2,7 @@ var Text = Shape.extend({
 
 	constructor: function() {
 		this.base("Text");
-		this.textstring = "fuck y'all";
+		this.textstring = "";
 		this.textarea = document.createElement('textarea');
 		this.textarea.id = "text";
 	},
@@ -13,30 +13,32 @@ var Text = Shape.extend({
 	},
 
 	drawing:function(point) {
-		this.size.x = point.x - this.pos.x;
-		this.size.y = point.y - this.pos.y;
+	    this.textarea.focus();
 	},
 
 	startDrawing:function(point) {
 		container.appendChild(this.textarea);
-		    // Tmp canvas is always cleared up before drawing.
 	     
-	    var x = this.pos.x;
-	    var y = this.pos.y;
-	    var width = this.size.x;
-	    var height = this.size.y;
-	     
-	    this.textarea.style.left = point.x + 'px';
-	    this.textarea.style.top = point.y + 'px';
-	    this.textarea.style.width = 50 + 'px';
-	    this.textarea.style.height = 25 + 'px';
+	    this.textarea.style.left = point.x - 25 + 'px';
+	    this.textarea.style.top = point.y + 15 + 'px';
+	    this.textarea.style.width = 70 + 'px';
+	    this.textarea.style.height = 30 + 'px';
 	     
 	    this.textarea.style.display = 'block';
+	    this.textarea.focus();
+
+	    $(document).bind("keypress.key13", function(e) {
+			if(e.which == 13) {
+				//app.drawingStart.drawingStop();
+				alert('Hér ætti þetta að kalla í stopDrawing');
+			}
+		});
 	},
 
 	stopDrawing:function(point) {
 		this.textstring = this.textarea.value;
 		container.removeChild(this.textarea);
+		$(document).unbind("keypress.key13");
 	},
 
 	added: function(canvas) {
