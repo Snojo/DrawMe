@@ -9,8 +9,9 @@ var Text = Shape.extend({
 
 	draw: function(canvas) {
 		canvas.font = this.fontsize + " " + this.font;
-		canvas.strokeStyle = this.color;
+		canvas.fillStyle = this.color;
 		canvas.fillText(this.textstring, this.pos.x, this.pos.y);
+		this.base(canvas);
 	},
 
 	drawing:function(point) {
