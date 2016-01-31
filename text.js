@@ -8,7 +8,7 @@ var Text = Shape.extend({
 	},
 
 	draw: function(canvas) {
-		canvas.font="20px Georgia";
+		canvas.font = this.fontSize;
 		canvas.fillText(this.textstring, this.pos.x, this.pos.y);
 	},
 

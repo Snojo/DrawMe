@@ -96,6 +96,10 @@ function App(canvasSelector) {
 		self.linewidth = width;
 	}
 
+	self.setFontSize = function(fontsize) {
+		self.fontsize = fontsize;
+	}
+
 	self.init = function() {
 		// Initialize App	
 		self.canvas = $(canvasSelector);
@@ -145,4 +149,5 @@ $(function() {
 	$('#redobutton').click(function(){app.redo()});
 	$('#color').change(function(){app.setColor($(this).val())});
 	$('#linewidth').change(function(){app.setLineWidth($(this).val())});
+	$('#fontsize').change(function(){app.setFontSize($(this).val())});
 });
