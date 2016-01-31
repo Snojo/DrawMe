@@ -29,8 +29,9 @@ var Text = Shape.extend({
 
 	    $(document).bind("keypress.key13", function(e) {
 			if(e.which == 13) {
-				//app.drawingStart.drawingStop();
-				alert('Hér ætti þetta að kalla í stopDrawing');
+				var evt = document.createEvent("MouseEvents");
+				evt.initEvent("mouseup", true, true);
+				document.getElementById("canvas").dispatchEvent(evt);
 			}
 		});
 	},
