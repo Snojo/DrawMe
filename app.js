@@ -10,6 +10,8 @@ function App(canvasSelector) {
 		shape.pos = startPos;
 		shape.color = self.color;
 		shape.linewidth = self.linewidth;
+		shape.fontsize = self.fontsize;
+		shape.font = self.font;
 
 		shape.startDrawing(startPos,self.canvasContext);
 		startPos.log('drawing start');
@@ -100,6 +102,10 @@ function App(canvasSelector) {
 		self.fontsize = fontsize;
 	}
 
+	self.setFont = function(font) {
+		self.font = font;
+	}
+
 	self.init = function() {
 		// Initialize App	
 		self.canvas = $(canvasSelector);
@@ -115,6 +121,8 @@ function App(canvasSelector) {
 		// Set defaults
 		self.color = '#ff0000';	
 		self.linewidth = 1;
+		self.fontsize = 16;
+		self.font = "Georgia";
 		self.shapeFactory = function() {
 			return new Pen();
 		};
@@ -150,4 +158,5 @@ $(function() {
 	$('#color').change(function(){app.setColor($(this).val())});
 	$('#linewidth').change(function(){app.setLineWidth($(this).val())});
 	$('#fontsize').change(function(){app.setFontSize($(this).val())});
+	$('#font').change(function(){app.setFont($(this).val())});
 });
