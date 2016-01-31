@@ -30,7 +30,7 @@ function App(canvasSelector) {
 
 			shape.stopDrawing(pos,self.canvasContext);
 
-			pos.log('drawing stop')
+			pos.log('drawing stop');
 
 			self.shapes.push(shape);
 			shape.added(self.canvasContext);
@@ -72,6 +72,24 @@ function App(canvasSelector) {
 		self.shapes = [];
 		self.redoarray = [];
 		self.redraw();
+	}
+
+	self.selectText = function() {
+		var link = document.getElementById('fontsize');
+		link.style.display = 'inline';
+		var link = document.getElementById('font');
+		link.style.display = 'inline';
+		var link = document.getElementById('linewidth');
+		link.style.display = 'none';
+	}
+
+	self.selectDrawing = function() {
+		var link = document.getElementById('fontsize');
+		link.style.display = 'none';
+		var link = document.getElementById('font');
+		link.style.display = 'none';
+		var link = document.getElementById('linewidth');
+		link.style.display = 'inline';
 	}
 
 	self.undo = function() {
@@ -138,25 +156,26 @@ $(function() {
 	// Wire up events
 	app = new App('#canvas');
 	$('#squarebutton').click(function(){app.shapeFactory = function() {
-		return new Square();
-	};});
+		return new Square();};
+		app.selectDrawing();});
 	$('#circlebutton').click(function(){app.shapeFactory = function() {
-		return new Circle();
-	};});
+		return new Circle();};
+		app.selectDrawing();});
 	$('#linebutton').click(function(){app.shapeFactory = function() {
-		return new Line();
-	};});
+		return new Line();};
+		app.selectDrawing();});
 	$('#penbutton').click(function(){app.shapeFactory = function() {
-		return new Pen();
-	};});
+		return new Pen();};
+		app.selectDrawing();});
 	$('#textbutton').click(function(){app.shapeFactory = function() {
-		return new Text();
-	};});
+		return new Text();};
+		app.selectText();
+		});
 	$('#clearbutton').click(function(){app.clear()});
 	$('#undobutton').click(function(){app.undo()});
 	$('#redobutton').click(function(){app.redo()});
 	$('#color').change(function(){app.setColor($(this).val())});
-	$('#linewidth').change(function(){app.setLineWidth($(this).val())});
+	$('#linewidth').change(function(){app.setLineWidth($(this).val());});
 	$('#fontsize').change(function(){app.setFontSize($(this).val())});
 	$('#font').change(function(){app.setFont($(this).val())});
 });
