@@ -7,8 +7,6 @@ var Shape = Base.extend({
 		this.color = color;
 		this.selected = false;
 		this.linewidth = linewidth;
-		this.fontsize = fontsize;
-		this.font = font;
 	},
 
 

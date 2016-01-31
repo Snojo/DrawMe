@@ -2,6 +2,8 @@ var Text = Shape.extend({
 
 	constructor: function() {
 		this.base("Text");
+		this.fontsize = fontsize;
+		this.font = font;
 		this.textstring = "";
 		this.textarea = document.createElement('textarea');
 		this.textarea.id = "text";

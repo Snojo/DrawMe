@@ -121,7 +121,7 @@ function App(canvasSelector) {
 		// Set defaults
 		self.color = '#ff0000';	
 		self.linewidth = 1;
-		self.fontsize = 16;
+		self.fontsize = "16px";
 		self.font = "Georgia";
 		self.shapeFactory = function() {
 			return new Pen();
