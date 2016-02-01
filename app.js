@@ -145,6 +145,13 @@ function App(canvasSelector) {
 	self.init();
 }
 
+function saveCanvas() {
+	var dt = canvas.toDataURL('image/png');
+	dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+	dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+	this.href = dt;
+};
+
 var app = null;
 $(function() {
 	// Wire up events
@@ -172,4 +179,5 @@ $(function() {
 	$('#linewidth').change(function(){app.setLineWidth($(this).val());});
 	$('#fontsize').change(function(){app.setFontSize($(this).val())});
 	$('#font').change(function(){app.setFont($(this).val())});
+	document.getElementById("savebutton").addEventListener('click', saveCanvas, false);
 });
