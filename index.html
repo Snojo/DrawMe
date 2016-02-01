@@ -4,10 +4,10 @@
 	<title>JS-Draw</title>
 	<style>
 		#toolbar {background-color:silver;}
+		#toolbar2 {padding: 10px;}
 		#canvas {border:1px solid blue;display:block;}
-		#linewidth {display: none}
-		#font {display: none}
-		#fontsize {display: none}
+		#font {display: none;}
+		#fontsize {display: none;}
 	</style>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script type="text/javascript" src="base.js"></script>
@@ -24,17 +24,17 @@
 </head>
 <body>	
 	<div id="toolbar">
-			<input checked="checked" type="radio" name="tool" id="penbutton" value="pen"></input><label for="linebutton"><img src="pen_image.png" alt="Pen"  height="32" width="32"/></label>
+			<input checked="checked" type="radio" name="tool" id="penbutton" value="pen"></input><label for="penbutton"><img src="pen_image.png" alt="Pen"  height="32" width="32"/></label>
 			<input type="radio" name="tool" id="squarebutton" value="square"></input><label for="squarebutton"><img src="square_image.png" alt="Square"  height="32" width="32"/></label>
 			<input type="radio" name="tool" id="circlebutton" value="circle"></input><label for="circlebutton"><img src="circle_image.png" alt="Circle"  height="32" width="32"/></label>
 			<input type="radio" name="tool" id="linebutton" value="line"></input><label for="linebutton"><img src="line_image.png" alt="Line"  height="32" width="32"/></label>
 			<input type="radio" name="tool" id="textbutton" value="text"></input><label for="textbutton"><img src="text_image.png" alt="Text"  height="32" width="32"/></label>
+			<input type="color" name="color" id="color" value="#ff0000"></input>
 			<select id="linewidth">
 				<option selected="selected" id="linewidth1" value="1">Thin line</option>
 				<option value="3">Medium line</option>
 				<option value="5">Thick line</option>
 			</select> 
-			<input type="color" name="color" id="color" value="#ff0000"></input>
 			<select id="fontsize">
 				<option selected="selected" id="fontsize1" value="16px">16px</option>
 				<option value="20px">20px</option>
@@ -46,9 +46,11 @@
 				<option selected="selected" id="font1" value="Georgia">Georgia</option>
 				<option value="Arial">Arial</option>
 			</select>
-			<input type="button" name="clearbutton" id="clearbutton" value="clear"></input>
-			<input type="button" name="undobutton" id="undobutton" value="Undo"></input>
-			<input type="button" name="redobutton" id="redobutton" value="Redo"></input>
+			<div id="toolbar2">
+				<input type="button" name="clearbutton" class="btn btn-primary btn-sm" id="clearbutton" value="Clear"></input>
+				<input type="button" name="undobutton" class="btn btn-primary btn-sm" id="undobutton" value="Undo"></input>
+				<input type="button" name="redobutton" class="btn btn-primary btn-sm" id="redobutton" value="Redo"></input>
+			</div>
 	</div>
 	<div id="container">
 		<canvas id="canvas" height="500" width="500"></canvas>

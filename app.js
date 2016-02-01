@@ -75,21 +75,15 @@ function App(canvasSelector) {
 	}
 
 	self.selectText = function() {
-		var link = document.getElementById('fontsize');
-		link.style.display = 'inline';
-		var link = document.getElementById('font');
-		link.style.display = 'inline';
-		var link = document.getElementById('linewidth');
-		link.style.display = 'none';
+		$( "#fontsize" ).show(200);
+		$( "#font" ).show(200);
+		$( "#linewidth" ).hide();
 	}
 
 	self.selectDrawing = function() {
-		var link = document.getElementById('fontsize');
-		link.style.display = 'none';
-		var link = document.getElementById('font');
-		link.style.display = 'none';
-		var link = document.getElementById('linewidth');
-		link.style.display = 'inline';
+		$( "#fontsize" ).hide();
+		$( "#font" ).hide();
+		$( "#linewidth" ).show(200);
 	}
 
 	self.undo = function() {

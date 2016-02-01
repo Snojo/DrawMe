@@ -23,8 +23,8 @@ var Text = Shape.extend({
 	startDrawing:function(point) {
 		container.appendChild(this.textarea);
 	     
-	    this.textarea.style.left = point.x - 25 + 'px';
-	    this.textarea.style.top = point.y + 15 + 'px';
+	    this.textarea.style.left = point.x + app.canvasOffset.x - 5 + 'px';
+	    this.textarea.style.top = point.y + app.canvasOffset.y - 10 + 'px';
 	    this.textarea.style.width = 70 + 'px';
 	    this.textarea.style.height = 30 + 'px';
 	     
